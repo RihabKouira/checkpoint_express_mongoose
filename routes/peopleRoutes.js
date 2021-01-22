@@ -10,6 +10,14 @@ router.post("/newPeople", (req, res) => {
     else res.json({ msg: "new people added" });
   });
 });
+/*POST many peoples*/
+router.post("/newPeoples", (req, res) => {
+  const arrayOfPeoples = req.body;
+  People.create(arrayOfPeoples, (err, msg) => {
+    if (err) throw err;
+    else res.json({ msg: "List added successfully !" });
+  });
+});
 /* GET: Find all the people having a given fname */
 router.get("/:fname", (req, res) => {
   People.find({ fname: req.params.fname }, (err, data) => {
