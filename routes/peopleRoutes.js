@@ -69,14 +69,14 @@ router.delete("/deletePeople/:id", (req, res) => {
     else res.json({ msg: "People was deleted" });
   });
 });
-// Delete all the people whose name is “Mary”
+// Delete all the people having a given name
 router.delete("/deletePeople/:fname", (req, res) => {
   People.deleteMany({ fname: req.params.fname }, (err, msg) => {
     if (err) throw err;
     else res.json({ msg: "People was deleted" });
   });
 });
-// Find people who like burrito. Sort them by name, limit the results to two documents, and hide their age.
+// search with query helpers
 router.get("/People/:favFoods", (req, res) => {
   People.find({ favFoods: req.params.favFoods })
     .sort({ fname: 1 })
